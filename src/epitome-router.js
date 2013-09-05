@@ -117,7 +117,12 @@
 						}
 					}
 
-					notfound && self.trigger('undefined');
+					notfound && self.trigger('undefined', {
+						hash: hash,
+						request: path.slice(1),
+						path: path,
+						query: query
+					});
 					/*jshint loopfunc:false */
 				});
 
