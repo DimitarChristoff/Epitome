@@ -64,7 +64,7 @@
 				window.addEvent(hc, function(){
 					/*jshint loopfunc:true */
 					var hash = location.hash,
-						path = hash.split('?')[0],
+						path = hash.split('?')[0].replace(/%20/g, " "),
 						query = hash.split('?')[1] || '',
 						notfound = true,
 						route;
@@ -131,6 +131,7 @@
 			},
 
 			navigate: function(route, trigger){
+				route = route.replace(/\s+/g, "%20");
 				if (location.hash === route && trigger){
 					window.fireEvent(hc);
 				}
