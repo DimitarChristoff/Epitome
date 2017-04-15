@@ -128,6 +128,17 @@ buster.testCase('Basic Epitome Events test >', {
 		foo.trigger('test1').trigger('test2');
 
 		buster.assert.calledTwice(spy);
+	},
+
+	'Expect arrays to be called like all other data': function() {
+		var spy = this.spy(),
+			foo = new this.Foo(),
+			data = [1,2,3, 'four', 'five', 'six'];
+
+		foo.on('test1', spy);
+		foo.trigger('test1');
+
+		buster.assert.calledWith(spy, foo, data);
 	}
 
 });

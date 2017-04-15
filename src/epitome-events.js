@@ -59,7 +59,7 @@
 					self = this;
 
 				if (!events && !subs) return this;
-				args = Array.from(args);
+				args = Type.isArguments(args) ? Array.slice(args) : [args];//wrap data for apply
 
 				events.each(function(fn){
 					// local events
